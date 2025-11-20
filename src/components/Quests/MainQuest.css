@@ -1,0 +1,349 @@
+/* 🎮 MainQuest.css — 300+ qator professional game-style UI */
+
+/* ======================== */
+/* ROOT + VARIABLES */
+/* ======================== */
+:root {
+  --mq-yellow: #ffcc00;
+  --mq-orange: #ff6600;
+  --mq-red: #ff3333;
+  --mq-bg-dark: rgba(20, 20, 30, 0.95);
+  --mq-card-bg: rgba(40, 40, 55, 0.95);
+  --mq-text-light: #eee;
+  --mq-text-muted: #aaa;
+  --mq-border: #444;
+  --mq-radius: 14px;
+  --mq-transition: all 0.3s ease;
+  --mq-font: 'Segoe UI', sans-serif;
+}
+
+/* ======================== */
+/* PANEL */
+/* ======================== */
+.mainquest-panel {
+  position: fixed;
+  top: 70px; /* tepadan joy qoldi */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--mq-bg-dark);
+  border-top: 3px solid var(--mq-yellow);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.6s ease forwards;
+  z-index: 1000;
+  font-family: var(--mq-font);
+}
+
+/* Animatsiya */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ======================== */
+/* HEADER */
+/* ======================== */
+.mq-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(255, 204, 0, 0.1);
+  border-bottom: 2px solid var(--mq-yellow);
+}
+.mq-header h2 {
+  color: var(--mq-yellow);
+  font-size: 1.6rem;
+  text-shadow: 0 0 8px var(--mq-yellow);
+}
+.mq-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: var(--mq-transition);
+}
+.mq-close:hover {
+  transform: scale(1.2);
+  color: var(--mq-red);
+}
+
+/* ======================== */
+/* SEARCH */
+/* ======================== */
+.mq-search {
+  padding: 12px 20px;
+}
+.mq-search input {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 2px solid var(--mq-border);
+  background: #111;
+  color: #fff;
+  outline: none;
+  font-size: 0.95rem;
+}
+.mq-search input:focus {
+  border-color: var(--mq-yellow);
+  box-shadow: 0 0 8px var(--mq-yellow);
+}
+
+/* ======================== */
+/* PROGRESS */
+/* ======================== */
+.mq-progress {
+  padding: 0 20px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+.mq-progress-bar {
+  flex: 1;
+  height: 12px;
+  border-radius: 8px;
+  background: #222;
+  overflow: hidden;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+.mq-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--mq-yellow), var(--mq-orange));
+  transition: width 0.4s ease;
+}
+
+/* ======================== */
+/* CONTENT */
+/* ======================== */
+.mq-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.mq-content::-webkit-scrollbar {
+  width: 8px;
+}
+.mq-content::-webkit-scrollbar-track {
+  background: #111;
+}
+.mq-content::-webkit-scrollbar-thumb {
+  background: var(--mq-yellow);
+  border-radius: 6px;
+}
+
+/* ======================== */
+/* CARD */
+/* ======================== */
+.mq-card {
+  position: relative;
+  background: var(--mq-card-bg);
+  border: 2px solid var(--mq-border);
+  border-radius: var(--mq-radius);
+  padding: 14px;
+  color: var(--mq-text-light);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s, border-color 0.3s;
+}
+.mq-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--mq-yellow);
+  box-shadow: 0 0 14px var(--mq-yellow);
+}
+
+/* Quest bosqichi */
+.mq-stage {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: var(--mq-yellow);
+  font-size: 1.1rem;
+  text-shadow: 0 0 5px var(--mq-yellow);
+}
+.mq-meta {
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+  color: var(--mq-text-muted);
+}
+
+/* Reward row */
+.mq-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+.mq-type {
+  font-weight: bold;
+}
+.mq-type.pro {
+  color: var(--mq-orange);
+  text-shadow: 0 0 4px var(--mq-orange);
+}
+.mq-reward {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+}
+
+/* Button style */
+.mq-row button {
+  background: #222;
+  border: 2px solid var(--mq-yellow);
+  padding: 4px 10px;
+  border-radius: 8px;
+  color: var(--mq-yellow);
+  cursor: pointer;
+  transition: var(--mq-transition);
+  font-weight: bold;
+}
+.mq-row button:hover:not(:disabled) {
+  background: var(--mq-yellow);
+  color: #111;
+  box-shadow: 0 0 8px var(--mq-yellow);
+}
+.mq-row button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Button pulsing (agar stage lvl yetgan bo‘lsa) */
+.mq-row button.active-glow {
+  animation: pulseGlow 1.5s infinite;
+}
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 4px var(--mq-yellow), 0 0 8px var(--mq-orange);
+  }
+  50% {
+    box-shadow: 0 0 12px var(--mq-yellow), 0 0 24px var(--mq-orange);
+  }
+  100% {
+    box-shadow: 0 0 4px var(--mq-yellow), 0 0 8px var(--mq-orange);
+  }
+}
+
+/* ======================== */
+/* LOCKED STATE */
+/* ======================== */
+.mq-card.locked {
+  filter: grayscale(80%) brightness(0.6);
+  border-color: #333;
+}
+.mq-lock-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 15, 0.85);
+  color: var(--mq-red);
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--mq-radius);
+  text-shadow: 0 0 6px var(--mq-red);
+}
+
+/* ======================== */
+/* DETAIL PANEL */
+/* ======================== */
+.mq-detail {
+  padding: 16px 20px;
+  background: rgba(30, 30, 45, 0.9);
+  border-top: 2px solid var(--mq-yellow);
+  color: #fff;
+}
+.mq-detail h3 {
+  color: var(--mq-yellow);
+  margin-bottom: 8px;
+  text-shadow: 0 0 6px var(--mq-yellow);
+}
+.mq-detail button {
+  margin-top: 10px;
+  background: #222;
+  border: 2px solid var(--mq-yellow);
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: var(--mq-yellow);
+  cursor: pointer;
+  transition: var(--mq-transition);
+}
+.mq-detail button:hover {
+  background: var(--mq-yellow);
+  color: #111;
+}
+
+/* ======================== */
+/* FOOTER */
+/* ======================== */
+.mq-footer {
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  color: var(--mq-text-muted);
+  background: rgba(10, 10, 20, 0.95);
+  border-top: 1px solid #222;
+}
+.mq-footer p {
+  margin: 2px 0;
+}
+
+/* ======================== */
+/* MEDIA QUERIES */
+/* ======================== */
+@media (max-width: 1024px) {
+  .mq-header h2 {
+    font-size: 1.3rem;
+  }
+  .mq-content {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .mainquest-panel {
+    top: 200px; /* mobilga moslashuv */
+  }
+  .mq-header h2 {
+    font-size: 1.2rem;
+  }
+  .mq-card {
+    padding: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .mainquest-panel {
+    top: 150px;
+  }
+  .mq-header {
+    padding: 12px 14px;
+  }
+  .mq-header h2 {
+    font-size: 1rem;
+  }
+  .mq-search input {
+    font-size: 0.85rem;
+  }
+  .mq-content {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .mq-detail {
+    padding: 12px 14px;
+  }
+}

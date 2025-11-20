@@ -1,0 +1,188 @@
+:root {
+    --fg: #eaeaea;
+    --muted: #9aa0a6;
+    --accent: #ffd54a;
+    --bg: #0b0e14;
+  }
+  
+  /* Umumiy wrapper */
+  .start-wrap {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 🎬 Intro sahna */
+  .intro-screen {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.329);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeOut 2s ease 1.5s forwards;
+  }
+  
+  .intro-title {
+    font-family: system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    font-size: clamp(32px, 8vw, 60px);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: #ffd54a;
+    text-transform: uppercase;
+  }
+  
+  @keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+  }
+  
+  /* 🎥 Background video */
+  .bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transform: rotate(180deg);
+  }
+  
+  /* Loader UI (fullscreen) */
+  .loading-ui {
+    width: min(720px, 92%);
+    padding: 28px 24px;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Title progress bilan to‘lishi */
+  .brand {
+    margin-top: 200px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    font-size: clamp(28px, 6vw, 44px);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #555 0%, #999 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .brand-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ffd54a, #ffee9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .skip-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 20;
+  }
+  .skip-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+  }
+  
+  
+  /* Loading bar */
+  .bar {
+    margin-top: 100px;
+    height: 14px;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ffd54a, #ffee9a);
+    transform-origin: left;
+    transition: width 220ms ease;
+  }
+  .bar-fill.entering {
+    background: linear-gradient(90deg, #00ff9d, #00ffaa);
+    animation: pulse 1.2s infinite;
+  }
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+  
+  .nums {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 2px 6px;
+    color: var(--muted);
+    font: 600 12px/1 system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  }
+  .nums b {
+    color: var(--fg);
+    font-size: 13px;
+  }
+  
+  .hint {
+    margin-top: 6px;
+    color: var(--muted);
+    font: 500 12px/1.35 system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    opacity: .9;
+  }
+  
+  .alert {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #2a1b1b;
+    color: #ffdede;
+    border: 1px solid #533;
+    font: 600 13px/1.3 system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  }
+  
+  /* Button */
+  .btn {
+    appearance: none;
+    border: 0;
+    border-radius: 14px;
+    padding: 10px 16px;
+    margin-top: 16px;
+    background: var(--accent);
+    color: #1a1300;
+    font: 800 14px/1 system-ui, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    box-shadow: 0 6px 18px rgba(255,213,74,.25);
+    cursor: pointer;
+    transition: transform .08s ease, box-shadow .2s ease;
+  }
+  .btn:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  .btn:not(:disabled):active {
+    transform: translateY(1px);
+  }
+  

@@ -1,68 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home/Home';
-import CharacterSelect from './components/CharacterSelect/CharacterSelect';
-import GameBoard from './components/GameBoard/GameBoard';
-import Final from './components/Final/Final';
-import Prank from './components/Global-Rank/PRank';
-import About from './components/Home/Abought';
-import { Analytics } from '@vercel/analytics/react'; // ✅ Qo‘shildi
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import './App.css';
+// src/App.jsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import MainShop from "./components/MainShop/MainShop.jsx"
+// Fayllaringni o‘zingdagi joylashuvga qarab moslab qo‘y
+import MainMenu from "./Beta/MainMenu/MainMenu";
+import Start from "./Beta/Start/start";
+import Login from "./Beta/Start/login";
+import MainInventory from "./components/Main-Inventory/MainInventory.jsx"
+import SelectHero from "./Beta/Start/HerosPage";
+import Rank$ from "./components/Ranks/Rank.jsx"
+import Register from "./Beta/Start/Register"
+import MainQuest from"./components/Quests/MainQuest.jsx"
 
-const App = () => {
-  const [isLandscape, setIsLandscape] = useState(true);
-  const [animationFinished, setAnimationFinished] = useState(false);
 
-  const checkOrientation = () => {
-    const landscape = window.matchMedia("(orientation: landscape)").matches;
-    setIsLandscape(landscape);
-  };
 
-  useEffect(() => {
-    checkOrientation();
-    window.addEventListener('orientationchange', checkOrientation);
-    window.addEventListener('resize', checkOrientation);
-
-    const timer = setTimeout(() => setAnimationFinished(true), 3000);
-
-    return () => {
-      window.removeEventListener('orientationchange', checkOrientation);
-      window.removeEventListener('resize', checkOrientation);
-      clearTimeout(timer);
-    };
-  }, []);
-
-  if (!animationFinished) {
-    return (
-      <div className="animation-screen">
-        <h1 className="fade-in">🎲 Dice - War ⚔</h1>
-      </div>
-    );
-  }
-
-  if (!isLandscape) {
-    return (
-      <div className="rotate-warning">
-        <h2>📱 Iltimos, telefoningizni gorizontal holatga o‘tkazing!</h2>
-      </div>
-    );
-  }
-
+function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/select" element={<CharacterSelect />} />
-        <Route path="/game" element={<GameBoard />} />
-        <Route path="/final" element={<Final />} />
-        <Route path="/top-player" element={<Prank />} />
-        <Route path="/abought" element={<About />} />
+        {/* Loader/Start sahifasi */}
+        <Route path="/" element={<Start />} />
+
+        {/* Login sahifasi */}
+        <Route path="/login" element={<Login />} />
+
+        {/* Qahramon tanlash */}
+        <Route path="/select-hero" element={<SelectHero />} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/mainmenu" element={<MainMenu/>} />
+        <Route path="/mainshop" element={<MainShop/>} />
+        <Route path="/maininventor" element={<MainInventory/>} />
+        <Route path="/main-quest" element={<MainQuest />} />
+        <Route path="/Global-Rank" element={<Rank$ />} />
+
+        {/* Keyinchalik qo‘shiladigan sahifa */}
+        {/* <Route path="/home" element={<Home />} /> */}
+
+        {/* Noto‘g‘ri URL kelsa -> Start ga yuboradi */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <Analytics /> {/* ✅ Bu yerga qo‘shildi */}
-      <SpeedInsights/> 
     </Router>
   );
-};
+}
 
 export default App;
+
+

@@ -7,16 +7,22 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:manifest": "node scripts/generate-manifest.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.53.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
+    "firebase": "^12.1.0",
     "framer-motion": "^12.23.6",
+    "lodash.debounce": "^4.0.8",
+    "prop-types": "^15.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
+    "react-window": "^2.0.2",
+    "uuid": "^11.1.0",
     "zustand": "^5.0.6"
   },
   "devDependencies": {

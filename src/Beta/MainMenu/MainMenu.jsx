@@ -4,7 +4,7 @@ import { auth, db } from "../../lib/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-
+import Campaign from "../../components/PlayClasses/Compaign/Compaign"; 
 import MainQuest from "../../components/Quests/MainQuest";
 import FallbackImage from "../../components/FallbackImage";
 
@@ -27,9 +27,16 @@ export default function MainMenu() {
   const [playMode, setPlayMode] = useState(false);
   const [artifactBonusOn, setArtifactBonusOn] = useState(true);
   const [questOpen, setQuestOpen] = useState(false);
+  const [campaignOpen, setCampaignOpen] = useState(false); // <-- Yangi state
   const [hasNewQuest, setHasNewQuest] = useState(false);
 
   const navigate = useNavigate();
+
+
+  const openCampaign = () => {
+    setCampaignOpen(true);        // Modalni ochamiz
+    setPlayMode(true);           // Play panelni yopamiz (ixtiyoriy)
+};
 
   useEffect(() => {
     const unsub = auth.onAuthStateChanged(async (user) => {
@@ -238,7 +245,7 @@ export default function MainMenu() {
         </div>
 
         <div className="mm-mode-list">
-          <div className="mm-mode-item" onClick={() => navigate("/game/classic")}>
+          <div className="mm-mode-item" onClick={openCampaign}>
             <video autoPlay muted loop playsInline poster="../">
               <source src="/modes/classic-preview.mp4" type="video/mp4" />
             </video>
@@ -266,7 +273,7 @@ export default function MainMenu() {
           </div>
         </div>
       </aside>
-
+      {campaignOpen && <Campaign onClose={() => setCampaignOpen(false)} userData={userData} />}
       {questOpen && <MainQuest onClose={() => setQuestOpen(false)} />}
     </div>
   );

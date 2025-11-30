@@ -228,3 +228,24 @@ export async function tryBuyMainArtifact(userData, artifactRowWithPrice) {
     return { success: false, message: "Sotib olishda kutilmagan xatolik." };
   }
 }
+
+
+export async function updateUserBalance(userId, amount) {
+  const { error } = await supabase
+    .from("users")
+    .update({ money: supabase.raw(`money + ${amount}`) })
+    .eq("id", userId);
+
+  return !error;
+}
+
+export async function addItemToInventory(userId, item) {
+  const { error } = await supabase.from("inventory").insert({
+    user_id: userId,
+    item_id: item.id,
+    name: item.name,
+    type: item.type,
+  });
+
+  return !error;
+}

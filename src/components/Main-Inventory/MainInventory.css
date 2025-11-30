@@ -201,4 +201,145 @@
     font-size: 1.2rem;
     margin-top: 50px;
   }
-  
+  /* Small devices (phones) */
+@media (max-width: 480px) {
+  .inv-main {
+    padding: 8px;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .inv-header h2 {
+    font-size: 1.2rem;
+  }
+  .inv-slots {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 8px;
+  }
+  .inv-slot {
+    min-height: 90px;
+  }
+  .inv-artifact img {
+    width: 50px;
+    height: 50px;
+  }
+  .inv-detail {
+    min-height: 180px;
+    padding: 12px;
+  }
+  .inv-detail-card img {
+    width: 60px;
+    height: 60px;
+  }
+  .inv-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 6px;
+  }
+  .inv-item img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .inv-slots {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+  .inv-slot {
+    min-height: 110px;
+  }
+  .inv-artifact img {
+    width: 55px;
+    height: 55px;
+  }
+  .inv-detail {
+    min-height: 200px;
+    padding: 14px;
+  }
+  .inv-detail-card img {
+    width: 70px;
+    height: 70px;
+  }
+  .inv-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 8px;
+  }
+  .inv-item img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .inv-slots {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+  .inv-slot {
+    min-height: 120px;
+  }
+  .inv-artifact img {
+    width: 60px;
+    height: 60px;
+  }
+  .inv-detail {
+    min-height: 220px;
+    padding: 16px;
+  }
+  .inv-detail-card img {
+    width: 80px;
+    height: 80px;
+  }
+  .inv-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+  }
+  .inv-item img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Extra large devices (large desktops) */
+@media (min-width: 1201px) {
+  .inv-main {
+    padding: 20px 32px;
+    gap: 1.2rem;
+  }
+  .inv-header h2 {
+    font-size: 1.8rem;
+  }
+  .inv-slots {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 16px;
+  }
+  .inv-slot {
+    min-height: 140px;
+  }
+  .inv-artifact img {
+    width: 70px;
+    height: 70px;
+  }
+  .inv-detail {
+    min-height: 250px;
+    padding: 20px;
+  }
+  .inv-detail-card img {
+    width: 90px;
+    height: 90px;
+  }
+  .inv-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+  }
+  .inv-item img {
+    width: 60px;
+    height: 60px;
+  }
+}

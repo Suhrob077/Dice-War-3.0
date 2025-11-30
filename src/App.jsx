@@ -11,6 +11,7 @@ import SelectHero from "./Beta/Start/HerosPage";
 import Rank$ from "./components/Ranks/Rank.jsx"
 import Register from "./Beta/Start/Register"
 import MainQuest from"./components/Quests/MainQuest.jsx"
+import Compaign from "./components/PlayClasses/Compaign/Compaign.jsx"
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/maininventor" element={<MainInventory/>} />
         <Route path="/main-quest" element={<MainQuest />} />
         <Route path="/Global-Rank" element={<Rank$ />} />
+        <Route path="/Compaign" element={<Compaign />} />
 
         {/* Keyinchalik qo‘shiladigan sahifa */}
         {/* <Route path="/home" element={<Home />} /> */}

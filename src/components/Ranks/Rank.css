@@ -1,10 +1,8 @@
 /* ========================
    RANK PAGE GLOBAL SHELL
    ======================== */
-
    .rank-shell {
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, "Noto Sans";
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
     color: #eaeaea;
     background: linear-gradient(180deg, #0b0f15 0%, #071019 100%);
     min-height: 100vh;
@@ -15,9 +13,8 @@
   }
   
   /* ========================
-     HEADER SECTION
+     HEADER
      ======================== */
-  
   .rank-header {
     display: flex;
     align-items: center;
@@ -25,12 +22,14 @@
     position: relative;
     margin-bottom: 18px;
     gap: 14px;
+    flex-wrap: wrap;
   }
   
   .menu-btn {
     position: absolute;
     left: 12px;
-    top: 8px;
+    top: 50%;
+    transform: translateY(-50%);
     background: transparent;
     border: 0;
     color: #ffd600;
@@ -38,29 +37,22 @@
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1),
-      background 0.18s;
+    transition: all 0.28s cubic-bezier(0.2, 0.9, 0.3, 1);
   }
   
   .menu-btn:active {
-    transform: translateY(1px) rotateX(6deg) scale(0.98);
+    transform: translateY(-50%) translateY(1px) rotateX(6deg) scale(0.98);
   }
   
   .rank-title {
     font-weight: 900;
-    font-size: 30px;
+    font-size: clamp(24px, 5vw, 30px);
     letter-spacing: 1px;
     padding: 10px 20px;
     border-radius: 12px;
-    position: relative;
     cursor: pointer;
     user-select: none;
-    display: inline-block;
-    --g1: #ffd600;
-    --g2: #00d4ff;
-    background: linear-gradient(90deg, var(--g1) 0%, var(--g2) 100%);
+    background: linear-gradient(90deg, #ffd600 0%, #00d4ff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -73,48 +65,27 @@
     inset: 0;
     border-radius: 12px;
     z-index: -1;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 214, 0, 0.06),
-      rgba(0, 212, 255, 0.03)
-    );
+    background: linear-gradient(90deg, rgba(255, 214, 0, 0.06), rgba(0, 212, 255, 0.03));
     filter: blur(8px);
     opacity: 0.5;
-    transform: translateZ(-1px);
-  }
-  
-  .rank-title:active {
-    animation: fillLeftToRight 0.55s ease forwards;
-  }
-  
-  @keyframes fillLeftToRight {
-    0% {
-      background-position: 0% 50%;
-      -webkit-background-clip: text;
-    }
-    100% {
-      background-position: 100% 50%;
-    }
   }
   
   /* ========================
-     HEADER BUTTON CONTROLS
+     CONTROLS
      ======================== */
-  
   .rank-controls {
     display: flex;
     gap: 10px;
     align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
   }
   
   .rank-btn {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.03),
-      rgba(255, 255, 255, 0.01)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.04);
     padding: 9px 14px;
     border-radius: 12px;
     color: #dcdcdc;
@@ -122,64 +93,60 @@
     cursor: pointer;
     transition: all 0.22s;
     backdrop-filter: blur(6px);
-    box-shadow: 0 6px 16px rgba(3, 7, 12, 0.6);
-    transform-style: preserve-3d;
+    box-shadow: 0 6px 16px rgba(3,7,12,0.6);
   }
   
   .rank-btn:hover {
-    transform: translateY(-4px) rotateX(4deg) scale(1.04);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.65);
   }
   
   .rank-btn.active {
     background: linear-gradient(90deg, #ffd600 0%, #00d4ff 100%);
     color: #071019;
     border: 0;
-    box-shadow: 0 18px 50px rgba(0, 212, 255, 0.09),
-      0 6px 20px rgba(255, 214, 0, 0.06);
-  }
-  
-  .rank-btn.refresh {
-    font-size: 18px;
-    padding: 8px 12px;
+    box-shadow: 0 18px 50px rgba(0,212,255,0.09), 0 6px 20px rgba(255,214,0,0.06);
   }
   
   /* ========================
-     BODY LAYOUT
+     BODY LAYOUT – ASOSIY O'ZGARTIRISH
      ======================== */
-  
   .rank-body {
     display: flex;
     gap: 20px;
-    align-items: flex-start;
     flex: 1;
+    flex-direction: column;        /* Mobil uchun birinchi ustun */
+  }
+  
+  @media (min-width: 1024px) {
+    .rank-body {
+      flex-direction: row;
+      align-items: flex-start;
+    }
   }
   
   /* ========================
      LEFT RANK LIST
      ======================== */
-  
   .rank-left {
-    width: 340px;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.01)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.04);
     border-radius: 14px;
     padding: 14px;
-    height: calc(100vh - 160px);
-    overflow: hidden;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    min-height: 300px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
   }
   
-  .rank-loading,
-  .rank-empty {
-    padding: 34px;
-    text-align: center;
-    color: #ffdcdc;
-    font-weight: 600;
+  @media (min-width: 1024px) {
+    .rank-left {
+      width: 340px;
+      height: calc(100vh - 180px);
+      position: sticky;
+      top: 20px;
+    }
   }
   
   .rank-list {
@@ -193,7 +160,6 @@
   .rank-list::-webkit-scrollbar {
     width: 6px;
   }
-  
   .rank-list::-webkit-scrollbar-thumb {
     background: #ffd600;
     border-radius: 3px;
@@ -201,7 +167,7 @@
   
   .rank-row {
     display: grid;
-    grid-template-columns: 42px 1fr 70px;
+    grid-template-columns: 42px 1fr 80px;
     gap: 12px;
     align-items: center;
     padding: 12px;
@@ -212,399 +178,171 @@
   }
   
   .rank-row:hover {
-    transform: translateX(10px);
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.012),
-      rgba(255, 255, 255, 0.02)
-    );
-    box-shadow: 0 8px 22px rgba(2, 6, 10, 0.6);
-  }
-  
-  .rank-pos {
-    font-weight: 800;
-    color: #ffd600;
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  .rank-name {
-    font-weight: 700;
-    color: #fff;
-  }
-  
-  .rank-value {
-    font-weight: 800;
-    color: #00d4ff;
-    text-align: right;
-  }
-  
-  .rank-row.selected {
-    outline: 2px solid rgba(255, 214, 0, 0.12);
-    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.65);
+    transform: translateX(6px);
+    background: rgba(255,255,255,0.02);
   }
   
   /* ========================
-     RIGHT DETAIL SECTION
+     RIGHT DETAIL SECTION – YANGI MOSLASHUV
      ======================== */
-  
   .rank-right {
-    
     flex: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.01),
-      rgba(255, 255, 255, 0.02)
-    );
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
     border-radius: 14px;
     padding: 20px;
-    min-height: auto;
+    border: 1px solid rgba(255,255,255,0.03);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    transition: all 0.45s cubic-bezier(0.2, 0.9, 0.28, 1);
-  }
-  
-  .rank-top-card {
     display: flex;
     flex-direction: column;
-    gap: 14px;
   }
   
-  .top-info {
+  /* Hero + Stats – markazlashtirish */
+  .Rank-hero-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-  }
-  
-  .top-name {
-    font-size: 24px;
-    font-weight: 900;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-  }
-  
-  /* ========================
-     STAR BADGES
-     ======================== */
-  
-  .rank-stars {
-    position: absolute;
-    padding-left: 150px;
-    display: flex;
-    gap: 30px;
-    align-items: center;
-  }
-  
-  .rank-star {
-    opacity: 20%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.01)
-    );
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
-    cursor: default;
-    position: relative;
-    transition: transform 0.18s, box-shadow 0.18s;
-  }
-  
-  .rank-star.active {
-    transform: translateY(-4px) rotateX(6deg);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
-  }
-  
-  .rank-star:hover {
-    opacity: 100%;
-    transform: translateY(+6px) scale(1.08);
-  }
-  
-  .rank-star:hover::after {
-    content: attr(title);
-    position: absolute;
-    left: 100%;
-    margin-left: 200px;
-    transform: translateX(-50%);
-    background: #071019;
-    padding: 8px 12px;
-    border-radius: 8px;
-    white-space: nowrap;
-    font-size: 13px;
-    color: #dcdcdc;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
-    z-index: 40;
-  }
-  
-  /* ========================
-     HERO + STATS
-     ======================== */
-  
-  .Rank-hero-section{
-    display: flex;
-    align-items: flex-start;
     gap: 20px;
-    position: relative;
-    transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.28, 1);
-  }
-  
-  .hero-stats {
-    margin-left: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 10px;
-
-    border-radius: 12px;
-    min-width: 300px;
-    align-self: center;
-    align-items: center;
-    backdrop-filter: blur(6px);
-  }
-  .rank-power{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
     width: 100%;
-    height: 50px;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.01)
-      
-    );
-    font-weight: 800;
-    border-radius: 0px 0px 90px 90px ;
-    border: 2px solid rgb(255, 115, 0);
-    box-shadow: 0 0 10px rgb(255, 115, 0);
+    transition: all 0.6s cubic-bezier(0.2, 0.9, 0.28, 1);
   }
   
-  .hero-stats > div {
-    width: 200px;
-    font-weight: 800;
-    padding: 8px 12px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.01)
-    );
-    text-align: left;
-    font-size: 24px;
-    border: 2px solid yellow;
-    box-shadow: 0 0 10px yellow;
-  }
-  
-  .hero-avatar-wrap {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  @media (min-width: 768px) {
+    .Rank-hero-section {
+      flex-direction: row;
+      justify-content: center;
+    }
   }
   
   .hero-avatar {
-    height: 400px;
-    max-width: 300px;
-    object-fit: cover;
+    height: 340px;
+    width: auto;
+    max-width: 90vw;
+    object-fit: contain;
     border-radius: 14px;
-    border: 3px solid rgba(255, 255, 255, 0.04);
-    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.7),
-      0 6px 18px rgba(0, 0, 0, 0.6);
-    transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.28, 1),
-      box-shadow 0.45s;
-    will-change: transform;
+    border: 3px solid rgba(255,255,255,0.04);
+    box-shadow: 0 26px 70px rgba(0,0,0,0.7);
+    transition: all 0.55s;
   }
   
   .hero-avatar:hover {
-    transform: perspective(900px) rotateY(-6deg) translateY(-6px) scale(1.02);
-    box-shadow: 0 40px 120px rgba(0, 212, 255, 0.08);
+    transform: translateY(-6px) scale(1.02);
+  }
+  
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 280px;
+    align-items: center;
+  }
+  
+  .hero-stats > div,
+  .rank-power {
+    width: 260px;
+    padding: 12px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 22px;
+    background: rgba(255,255,255,0.02);
+    border: 2px solid #ffd600;
+    box-shadow: 0 0 12px rgba(255,215,0,0.4);
+  }
+  
+  .rank-power {
+    font-size: 28px;
+    border-color: #ff7300;
+    box-shadow: 0 0 15px rgba(255,115,0,0.6);
+    border-radius: 0 0 80px 80px;
   }
   
   /* ========================
-     ARTIFACT TOGGLE
+     ARTIFACT TOGGLE VA PANEL – TO'LIQ MOBILE-FRIENDLY
      ======================== */
-  
   .artifact-toggle {
     display: flex;
-    gap: 10px;
-    transition: 2s;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: 8px;
+    justify-content: center;
+    margin: 20px 0 10px;
   }
   
   .artifact-toggle button {
     background: linear-gradient(90deg, #ffd500, #00d4ff);
     border: 0;
-    padding: 11px 16px;
+    padding: 12px 20px;
     border-radius: 12px;
     color: #071019;
     font-weight: 800;
     cursor: pointer;
-    transition: 2s;
-    box-shadow: 0 24px 60px rgba(0, 212, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0,212,255,0.2);
   }
-  
-  .artifact-toggle button:active {
-    transition: 2s;
-    transform: translateY(2px) scale(0.995);
-  }
-  
-  /* ========================
-     ARTIFACT PANEL
-     ======================== */
   
   .artifact-slots {
-    overflow: hidden;
-    transition: 0.6s;
-    position: absolute;
-    /* top: 120px; */
-    bottom: 5%;
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    height: 380px;
-    gap: 15px;
-    padding: 14px;
-    /* background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.01)
-    ); */
-    border-radius: 14px;
-    /* border: 1px solid rgba(255, 255, 255, 0.03); */
-    /* box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65); */
-    transform: translateX(0);
-    opacity: 1;
-    transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.28, 1), opacity 0.35s;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    padding: 10px;
+    margin-top: 10px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.2, 0.9, 0.28, 1);
   }
   
+  .rank-right.show-artifacts .artifact-slots {
+    opacity: 1;
+    max-height: 600px;
+    padding: 20px 10px;
+  }
+  
+  /* Artifact kartalar */
   .artifact-slot {
-    width: 130px;
-    height: 100px;
-    padding: 10px;
+    background: rgba(255,255,255,0.03);
     border-radius: 12px;
-    background: linear-gradient(
-      180deg,
-      rgba(243, 241, 241, 0.034),
-      transparent
-    );
+    padding: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 8px;
-    overflow: hidden;
+    min-height: 140px;
   }
   
   .artifact-card img,
   .artifact-card .fallback {
     width: 80px;
     height: 80px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 8px;
-    /* border: 2px solid rgba(255, 255, 255, 0.04);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); */
   }
   
   .artifact-card p {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     text-align: center;
     margin: 0;
     color: #fff;
   }
   
-  .artifact-locked,
-  .artifact-empty {
-    font-weight: 800;
-    color: #bdbdbd;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.01),
-      transparent
-    );
-    padding: 6px 8px;
-    border-radius: 8px;
-  }
-  
-  /* Sliding animation */
-  .rank-right.show-artifacts .Rank-hero-section{
-    transform: translateX(-530px);
-  }
-  
-  .rank-right.show-artifacts .artifact-slots {
-    transform: translateX(0);
-    opacity: 1;
-    right: -30px;
-  }
-  
-  .rank-right:not(.show-artifacts) .artifact-slots {
-    transform: translateX(50px);
-    opacity: 0;
-    pointer-events: none;
-  }
-  
   /* ========================
-     MEDIA QUERIES
+     MEDIA QUERIES – YAXSHILANGAN
      ======================== */
-  
-  @media (max-width: 1024px) {
-    .rank-body {
-      flex-direction: column;
-    }
-  
-    .rank-left {
-      width: 100%;
-      height: 280px;
-      overflow-y: auto;
-    }
-  
-    .rank-right {
-      min-height: 460px;
-    }
-  
-    .artifact-slots {
-      position: static;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 14px;
-      opacity: 1;
-      transform: none;
-    }
-  }
-  
-  @media (max-width: 640px) {
-    .rank-title {
-      font-size: 22px;
-    }
-  
+  @media (max-width: 768px) {
     .hero-avatar {
-      height: 240px;
-      max-width: 120px;
+      height: 280px;
     }
-  
-    .rank-left {
-      height: 240px;
-    }
-  
-    .artifact-slot {
-      width: 100px;
-      height: 100px;
-    }
-  
-    .artifact-card img {
-      width: 60px;
-      height: 60px;
+    .hero-stats > div,
+    .rank-power {
+      width: 220px;
+      font-size: 20px;
     }
   }
   
+  @media (max-width: 480px) {
+    .rank-shell { padding: 12px; }
+    .rank-header { flex-direction: column; }
+    .menu-btn { position: static; transform: none; }
+    .hero-avatar { height: 220px; }
+    .hero-stats > div,
+    .rank-power { width: 100%; max-width: 260px; }
+    .artifact-slots { grid-template-columns: repeat(2, 1fr); }
+  }
